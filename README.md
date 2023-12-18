@@ -137,7 +137,7 @@ std::cout << "\nOffice Computer Configuration:\n";
 office_computer.show_info();
 ```
 
-### Prototype Pattern Example
+# Prototype Pattern Example
 
 ## Overview
 
