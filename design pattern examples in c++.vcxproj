@@ -132,7 +132,7 @@
     <ClCompile Include="Creational Design Patterns\Builder Pattern\builder_pattern.cpp" />
     <ClCompile Include="Structural Design Pattern\Flyweight Pattern\flyweight_pattern.cpp" />
     <ClCompile Include="Structural Design Pattern\Decorator Pattern\decorator_pattern.cpp" />
-    <ClCompile Include="design pattern examples in c++.cpp" />
+    <ClCompile Include="main.cpp" />
     <ClCompile Include="Creational Design Patterns\Factory Pattern\factory_pattern.cpp" />
     <ClCompile Include="Creational Design Patterns\Singleton Pattern\singleton_pattern.cpp" />
     <ClCompile Include="Creational Design Patterns\Prototype Pattern\prototype_pattern_example.cpp" />

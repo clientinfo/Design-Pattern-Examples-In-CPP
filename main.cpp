@@ -262,6 +262,5 @@ int main()
 	//decorator_example();
 	//flyweight_example();
 	//adapter_example();
-
-	bridge_example();
+	//bridge_example();
 }
