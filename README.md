@@ -36,31 +36,60 @@ If the instance doesn't exist, it is created. Otherwise, the existing instance i
 
 Static method that takes a string argument and prints it to the console.
 
-## Usage
-
-To use the Singleton pattern in your program, follow these steps:
-
-1. Call `get_instance()` to obtain the singleton instance.
-2. Use the obtained instance to access or modify the class's functionalities.
-3. Optionally, call `print_text_in_console(const std::string& arg_text)` to print text to the console.
-
-## Example
+## Example Usage
 
 ```cpp
-#include "singleton_pattern.hpp"
-
-int main() {
     // Get the singleton instance
     auto singleton_instance = singleton_pattern_example::singleton_pattern::get_instance();
 
     // Print text using the singleton instance
     singleton_instance->print_text_in_console("Hello, Singleton!");
+```
+# Factory Pattern Example
 
-    return 0;
-}
+## Overview
+
+Factory Pattern makes it easy to create multiple diffrent objects by providing an interface for creating objects without specifying their concrete classes.
+
+It encapsulates object creation in factories, allowing clients to create objects without knowing their specific types. 
+
+This pattern allows easy extension by adding new classes or types without modifying existing client code.
+
+This Factory Pattern example demonstrates the creation of burgers using the Factory design pattern. 
+
+The implementation includes:
+
+#### Classes
+
+- **`burger`**: Interface declaring methods that concrete burgers must implement.
+- **`cheese_burger`**: Concrete class implementing the `burger` interface for cheeseburgers.
+- **`veggie_burger`**: Concrete class implementing the `burger` interface for veggieburgers.
+- **`burger_factory`**: Interface for creating burgers, declaring a method to create burgers.
+- **`cheese_burger_factory`**: Concrete factory creating instances of `cheese_burger`.
+- **`veggie_burger_factory`**: Concrete factory creating instances of `veggie_burger`.
+
+## Example Usage
+
+The pattern allows creating different types of burgers through factory objects. For instance:
+
+```cpp
+// Create a factory for cheeseburgers
+auto cheese_burger_factory = std::make_shared<factory_pattern_example::cheese_burger_factory>();
+auto cheese_burger = cheese_burger_factory->create_burger();
+cheese_burger->prepare();
+cheese_burger->cook();
+cheese_burger->serve();
+// Create a factory for veggieburgers
+auto veggie_burger_factory = std::make_shared<factory_pattern_example::veggie_burger_factory>();
+auto veggie_burger = veggie_burger_factory->create_burger();
+veggie_burger->prepare();
+veggie_burger->cook();
+veggie_burger->serve();
 ```
 
 # Builder Pattern Example
+
+## Overview
 
 Builder is a creative design pattern that allows you to build complex objects step by step. 
 This pattern allows you to create different types and representations of an object using the same construction code.
@@ -70,23 +99,23 @@ The example here illustrates the Builder pattern in the context of creating cust
 
 ### `computer` Class
 
-The `computer` class embodies the product to be constructed. It provides methods to set crucial components like the CPU, RAM, and storage. Additionally, it includes a method to display the computer's configuration.
+- The `computer` class embodies the product to be constructed. It provides methods to set crucial components like the CPU, RAM, and storage. Additionally, it includes a method to display the computer's configuration.
 
 ### `computer_builder` Interface
 
-The `computer_builder` interface defines the methods that concrete builders must implement. These methods include building the CPU, RAM, storage, and retrieving the constructed computer.
+- The `computer_builder` interface defines the methods that concrete builders must implement. These methods include building the CPU, RAM, storage, and retrieving the constructed computer.
 
 ### `gaming_computer_builder` Class
 
-The `gaming_computer_builder` class is a concrete builder tailored for gaming computers. It implements methods to construct a gaming computer.
+- The `gaming_computer_builder` class is a concrete builder tailored for gaming computers. It implements methods to construct a gaming computer.
 
 ### `office_computer_builder` Class
 
-The `office_computer_builder` class is another concrete builder designed for office computers. It implements methods to build a standard office computer.
+- The `office_computer_builder` class is another concrete builder designed for office computers. It implements methods to build a standard office computer.
 
 ### `computer_director` Class
 
-The `computer_director` class orchestrates the construction process using a builder. It contains a method to construct a computer by invoking the builder's methods to assemble the CPU, RAM, and storage components.
+- The `computer_director` class orchestrates the construction process using a builder. It contains a method to construct a computer by invoking the builder's methods to assemble the CPU, RAM, and storage components.
 
 ## Example Usage
 
@@ -107,6 +136,37 @@ gaming_computer.show_info();
 std::cout << "\nOffice Computer Configuration:\n";
 office_computer.show_info();
 ```
-This example demonstrates the creation of a gaming computer and an office computer using the Builder pattern.
-You can tailor the computer's configuration by choosing different builders, such as gaming_computer_builder and office_computer_builder.
+
+### Prototype Pattern Example
+
+## Overview
+
+This example demonstrates the Prototype pattern, in which new objects are created by copying an existing object.
+
+Here, we have a `prototype_pattern_example` showcasing the use of the Prototype pattern with shapes.
+
+## Prototype Pattern Classes
+
+### Prototype (Shape): `shape`
+
+The `shape` class defines the prototype for various shapes. It declares the `clone_shape()` method to create a new instance of the shape.
+
+### Concrete Prototypes: `circle` and `square`
+
+The `circle` and `square` classes are concrete implementations of the `shape` prototype. They provide their own `clone_shape()` and `draw()` methods.
+
+## Example Usage
+
+```cpp
+    // Create prototypes
+    auto circle_prototype = std::make_unique<prototype_pattern_example::circle>();
+    auto square_prototype = std::make_unique<prototype_pattern_example::square>();
+
+    // Clone shapes
+    auto copy_of_circle = circle_prototype->clone_shape();
+    auto copy_of_square = square_prototype->clone_shape();
+
+    // Draw the cloned shapes
+    copy_of_circle->draw();
+    copy_of_square->draw();
 
